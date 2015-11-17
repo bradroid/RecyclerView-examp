@@ -22,6 +22,12 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
         inflater = LayoutInflater.from(context);
     }
 
+    public void add(List<Article> items) {
+        int previousDataSize = this.data.size();
+        this.data.addAll(items);
+        notifyItemRangeInserted(previousDataSize, items.size());
+    }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.article_item, parent, false);
